@@ -80,18 +80,18 @@ Resources:
           pip install -r requirements.txt
           nohup gunicorn -w 3 -b 0.0.0.0:8000 app:app &
   # AutoScalingGroup:
-    AutoScalingGroup:
-      Type: AWS::AutoScaling::AutoScalingGroup
-      Properties:
-        AvailabilityZones: !GetAZs
-        DesiredCapacity: "1"
-        MinSize: "1"
-        MaxSize: "1"
-        LaunchConfigurationName:
-          Ref: "LaunchConfiguration"
-        LoadBalancerNames:
-          - Ref: "LoadBalancer"
-        Tags:
-          - Key: Name
-            Value: "AutoScaling-Mythical"
-            PropagateAtLaunch: "true"
+  AutoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      AvailabilityZones: !GetAZs
+      DesiredCapacity: "1"
+      MinSize: "1"
+      MaxSize: "1"
+      LaunchConfigurationName:
+        Ref: "LaunchConfiguration"
+      LoadBalancerNames:
+        - Ref: "LoadBalancer"
+      Tags:
+        - Key: Name
+          Value: "AutoScaling-Mythical"
+          PropagateAtLaunch: "true"
